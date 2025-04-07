@@ -1,0 +1,28 @@
+[project]
+name = "llm-hacker-news"
+version = "0.1"
+description = "LLM plugin for pulling content from Hacker News"
+readme = "README.md"
+authors = [{name = "Simon Willison"}]
+license = "Apache-2.0"
+classifiers = []
+requires-python = ">=3.9"
+dependencies = [
+    "llm>=0.24"
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project.urls]
+Homepage = "https://github.com/simonw/llm-hacker-news"
+Changelog = "https://github.com/simonw/llm-hacker-news/releases"
+Issues = "https://github.com/simonw/llm-hacker-news/issues"
+CI = "https://github.com/simonw/llm-hacker-news/actions"
+
+[project.entry-points.llm]
+hacker_news = "llm_hacker_news"
+
+[project.optional-dependencies]
+test = ["pytest", "pytest-httpx"]
