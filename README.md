@@ -7,6 +7,11 @@
 
 LLM plugin for pulling content from Hacker News
 
+For background on how this works:
+
+- [Long context support in LLM 0.24 using fragments and template plugins](https://simonwillison.net/2025/Apr/7/long-context-llm/)
+- [Blog post announcing llm-hacker-news](https://simonwillison.net/2025/Apr/8/llm-hacker-news/)
+
 ## Installation
 
 Install this plugin in the same environment as [LLM](https://llm.datasette.io/).
