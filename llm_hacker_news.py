@@ -12,6 +12,11 @@ def register_fragment_loaders(register):
 
 
 def hacker_news_loader(argument: str) -> llm.Fragment:
+    """
+    Given a Hacker News article ID returns the full nested conversation.
+
+    For example: -f hn:43875136
+    """
     try:
         response = httpx.get(f"https://hn.algolia.com/api/v1/items/{argument}")
         response.raise_for_status()
