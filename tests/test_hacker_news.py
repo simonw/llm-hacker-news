@@ -57,3 +57,9 @@ EXAMPLE = {
         },
     ],
 }
+
+def test_hacker_news_loader_with_uri(httpx_mock):
+    httpx_mock.add_response(json=EXAMPLE)
+    fragment = hacker_news_loader("https://news.ycombinator.com/item?id=123456")
+    assert isinstance(fragment, llm.Fragment)
+    assert fragment.source == "https://news.ycombinator.com/item?id=123456"

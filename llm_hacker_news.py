@@ -16,16 +16,21 @@ def hacker_news_loader(argument: str) -> llm.Fragment:
     Given a Hacker News article ID returns the full nested conversation.
 
     For example: -f hn:43875136
+    Or with complete uri: -f hn:https://news.ycombinator.com/item?id=43875136
     """
     try:
-        response = httpx.get(f"https://hn.algolia.com/api/v1/items/{argument}")
+        number = re.search(r"\d+", argument)
+        if not number:
+            raise ValueError(f"Invalid Hacker News ID or URI: {argument}")
+        numeric_id = int(number.group(0))
+        response = httpx.get(f"https://hn.algolia.com/api/v1/items/{numeric_id}")
         response.raise_for_status()
         data = response.json()
     except Exception as ex:
         raise ValueError(f"Could not load Hacker News {argument}: {str(ex)}")
     return llm.Fragment(
         process_hn_comments(data),
-        source=f"https://news.ycombinator.com/item?id={argument}",
+        source=f"https://news.ycombinator.com/item?id={numeric_id}",
     )
 
 
