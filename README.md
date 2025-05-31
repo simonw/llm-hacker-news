@@ -20,11 +20,18 @@ llm install llm-hacker-news
 ```
 ## Usage
 
-You can feed a full conversation thread from [Hacker News](https://news.ycombinator.com/) into LLM using the `hn:` [fragment](https://llm.datasette.io/en/stable/fragments.html) with the ID of the conversation. For example:
+You can feed a full conversation thread from [Hacker News](https://news.ycombinator.com/) into LLM using the `hn:` [fragment](https://llm.datasette.io/en/stable/fragments.html) with either the ID of the conversation or the full item URL. For example:
 
 ```bash
 llm -f hn:43615912 'summary with illustrative direct quotes'
 ```
+
+Or using the full URL:
+
+```bash
+llm -f hn:https://news.ycombinator.com/item?id=43615912 'summary with illustrative direct quotes'
+```
+
 Item IDs can be found in the URL of the conversation thread.
 
 ## Development
